@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Digital Clock</title>
+     <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="title"> Digital Clock</h1>
+        
+        <div class="clock-container">
+            <div class="clock-display">
+                <div class="time-unit">
+                    <div class="time-value" id="hours">15</div>
+                    <div class="time-label">HOURS</div>
+                </div>
+                <div class="separator">:</div>
+                <div class="time-unit">
+                    <div class="time-value" id="minutes">13</div>
+                    <div class="time-label">MINS</div>
+                </div>
+                <div class="separator">:</div>
+                <div class="time-unit">
+                    <div class="time-value" id="seconds">28</div>
+                    <div class="time-label">SECS</div>
+                </div>
+            </div>
+            
+            <div class="date-display" id="date">Monday, October 10, 2023</div>
+        </div>
+        
+       
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            const seconds = now.getSeconds().toString().padStart(2, '0');
+            
+            document.getElementById('hours').textContent = hours;
+            document.getElementById('minutes').textContent = minutes;
+            document.getElementById('seconds').textContent = seconds;
+            
+            // Update date
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('date').textContent = now.toLocaleDateString('en-US', options);
+        }
+        
+        // Update clock every second
+        setInterval(updateClock, 1000);
+        updateClock(); // Initial call
+    </script>
+</body>
+</html>
